@@ -13,7 +13,7 @@ class UploadVideoTest extends TestCase
         $uri = route('admin.videos.create');
 
         // Act
-        $response = $this->actingAsRandomUser()->get($uri);
+        $response = $this->actingAsAdmin()->get($uri);
 
         // Assert
         $response->assertOk();

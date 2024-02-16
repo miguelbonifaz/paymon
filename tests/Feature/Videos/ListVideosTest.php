@@ -13,7 +13,7 @@ class ListVideosTest extends TestCase
         $uri = route('videos.index');
 
         // Act
-        $response = $this->actingAsRandomUser()->get($uri);
+        $response = $this->actingAsUser()->get($uri);
 
         // Assert
         $response->assertOk();

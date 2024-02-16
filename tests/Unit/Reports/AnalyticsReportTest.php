@@ -28,9 +28,9 @@ class AnalyticsReportTest extends TestCase
     {
         // Arrange
         $videos = Video::factory()->createMany([
-            ['uploaded_at' => today()],
-            ['uploaded_at' => today()->subMonth()],
-            ['uploaded_at' => today()->subMonths(2)],
+            ['uploaded_at' => today(), 'views' => 3],
+            ['uploaded_at' => today()->subMonth(), 'views' => 2],
+            ['uploaded_at' => today()->subMonths(2), 'views' => 1],
         ]);
 
         $fromDate = today()->subMonths(2);
@@ -43,26 +43,20 @@ class AnalyticsReportTest extends TestCase
         $this->assertCount(3, $report->getMostViewedVideosByMonth());
         $this->assertEquals(
             [
-                today()->format('M Y') => [
-                    [
-                        'id' => $videos->get(0)->id,
-                        'title' => $videos->get(0)->title,
-                        'views' => $videos->get(0)->views,
-                    ]
+                [
+                    'id' => $videos->get(0)->id,
+                    'title' => $videos->get(0)->title,
+                    'views' => $videos->get(0)->views,
                 ],
-                today()->subMonth()->format('M Y') => [
-                    [
-                        'id' => $videos->get(1)->id,
-                        'title' => $videos->get(1)->title,
-                        'views' => $videos->get(1)->views,
-                    ]
+                [
+                    'id' => $videos->get(1)->id,
+                    'title' => $videos->get(1)->title,
+                    'views' => $videos->get(1)->views,
                 ],
-                today()->subMonths(2)->format('M Y') => [
-                    [
-                        'id' => $videos->get(2)->id,
-                        'title' => $videos->get(2)->title,
-                        'views' => $videos->get(2)->views,
-                    ]
+                [
+                    'id' => $videos->get(2)->id,
+                    'title' => $videos->get(2)->title,
+                    'views' => $videos->get(2)->views,
                 ],
             ],
             $report->getMostViewedVideosByMonth()->toArray()

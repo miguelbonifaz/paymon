@@ -16,7 +16,7 @@ class ShowAnalyticsTest extends TestCase
         $uri = route('admin.analytics.index');
 
         // Act
-        $response = $this->actingAsRandomUser()->get($uri);
+        $response = $this->actingAsAdmin()->get($uri);
 
         // Assert
         $response->assertOk();

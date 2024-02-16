@@ -19,7 +19,7 @@ class UploadVideoTest extends TestCase
     {
         parent::setUp();
         Storage::fake('public');
-        $this->actingAsRandomUser();
+        $this->actingAsAdmin();
     }
 
     private function buildComponent($data = []): Testable

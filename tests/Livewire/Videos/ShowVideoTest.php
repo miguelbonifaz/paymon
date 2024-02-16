@@ -13,7 +13,7 @@ class ShowVideoTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->actingAsRandomUser();
+        $this->actingAsAdmin();
     }
 
     private function buildComponent($data = []): Testable

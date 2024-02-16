@@ -12,7 +12,7 @@ class ListVideoTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->actingAsRandomUser();
+        $this->actingAsAdmin();
     }
 
     private function buildComponent(): Livewire\Features\SupportTesting\Testable

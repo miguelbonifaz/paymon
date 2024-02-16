@@ -26,6 +26,7 @@ class CreateVideo extends Component
         Video::create([
             'title' => $this->title,
             'url' => $videoPath,
+            'uploaded_at' => now()
         ]);
 
         session()->flash('flash_success', 'Video created successfully!');
