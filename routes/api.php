@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\VideoAnalyticsController;
 use App\Http\Controllers\Api\VideoController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::prefix('/videos')->group(function () {
-        Route::get('/', [VideoController::class, 'index'])->name('api.videos.index');
-        Route::post('/', [VideoController::class, 'store'])->name('api.videos.store');
-        Route::get('/{video}', [VideoController::class, 'show'])->name('api.videos.show');
-        Route::put('/{video}', [VideoController::class, 'update'])->name('api.videos.update');
-        Route::delete('/{video}', [VideoController::class, 'destroy'])->name('api.videos.destroy');
-    });
+    Route::get('/videos', [VideoController::class, 'index'])->name('api.videos.index');
+    Route::get('/video-analytics', VideoAnalyticsController::class)->name('api.video-analytics.index');
 });
