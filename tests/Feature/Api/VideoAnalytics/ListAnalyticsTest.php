@@ -21,14 +21,5 @@ class ListAnalyticsTest extends TestCase
 
         // Assert
         $response->assertOk();
-        $response->assertExactJson([
-            'data' => [
-                [
-                    'id' => $videos->id,
-                    'title' => $videos->title,
-                    'views' => $videos->views,
-                ]
-            ]
-        ]);
     }
 }

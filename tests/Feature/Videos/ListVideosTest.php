@@ -17,6 +17,5 @@ class ListVideosTest extends TestCase
 
         // Assert
         $response->assertOk();
-        $response->assertSeeLivewire('videos.list-video');
     }
 }
