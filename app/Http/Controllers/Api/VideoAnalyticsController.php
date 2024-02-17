@@ -22,7 +22,13 @@ class VideoAnalyticsController extends Controller
         ]);
 
         return response()->json([
-            'data' => $analyticReport->getMostViewedVideosByMonth()
+            'data' => [
+                'report' => $analyticReport->present()->analyticReportForApexcharts(),
+                'filters' => [
+                    'fromDate' => $filters['fromDate']->format('Y-m-d'),
+                    'toDate' => $filters['toDate']->format('Y-m-d'),
+                ]
+            ]
         ], Response::HTTP_OK);
     }
 }

@@ -3,5 +3,7 @@
         Video
     </x-slot>
 
-    <livewire:videos.list-video/>
+    <div id="app">
+        <video-list/>
+    </div>
 </x-app-layout>

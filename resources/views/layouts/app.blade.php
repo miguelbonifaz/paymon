@@ -158,6 +158,14 @@
         </main>
     </div>
 </div>
+<script>
+    @auth
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+            'apiToken' => auth()->user()?->api_token,
+        ]) !!};
+    @endauth
+</script>
 @livewireScripts
 @stack('scripts')
 </body>
